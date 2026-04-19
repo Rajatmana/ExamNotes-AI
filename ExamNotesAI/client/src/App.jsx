@@ -11,7 +11,7 @@ import History from './pages/History'
 import PaymentSuccess from './pages/PaymentSuccess'
 import PaymentFailed from './pages/PaymentFailed'
 
-export const serverUrl = "https://examnotes-ai-5816.onrender.com"
+export const serverUrl = "https://examnotes-ai-server-mbr4.onrender.com"
 
 function App() {
   const dispatch = useDispatch()
