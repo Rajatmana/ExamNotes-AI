@@ -7,9 +7,17 @@ import cors from "cors"
 import userRouter from "./routes/user.route.js"
 import notesRouter from "./routes/generate.route.js"
 import pdfRouter from "./routes/pdf.route.js"
+import creditRouter from "./routes/credits.route.js"
+import { stripeWebhook } from "./controllers/credits.controller.js"
 dotenv.config()
 
 const app = express()
+
+app.post(
+  "/api/credits/webhook",
+  express.raw({ type: "application/json" }),
+  stripeWebhook
+);
 
 app.use(cors(
     {origin:"http://localhost:5173",
@@ -27,6 +35,7 @@ app.use("/api/auth", authRouter)
 app.use("/api/user", userRouter)
 app.use("/api/notes", notesRouter)
 app.use("/api/pdf", pdfRouter)
+app.use("/api/credit", creditRouter)
 
 app.listen(PORT,()=>{
     console.log(`Server running on port ${PORT}`);
